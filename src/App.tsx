@@ -561,6 +561,8 @@ export default function App() {
     return <Login />;
   }
 
+  const hasNativeBottomAd = Capacitor.isNativePlatform() && !userProfile?.isPremium;
+
   return (
     <div className="min-h-screen bg-zinc-50 flex flex-col max-w-md mx-auto relative overflow-hidden font-sans">
       {!userProfile?.hasCompletedOnboarding && <Onboarding onComplete={handleCompleteOnboarding} />}
@@ -618,7 +620,7 @@ export default function App() {
         </div>
       </header>
 
-      <main className="flex-1 p-6 pb-24">
+      <main className={`flex-1 p-6 ${hasNativeBottomAd ? 'pb-40' : 'pb-24'}`}>
         <AnimatePresence mode="wait">
           {activeView === 'scan' && (
             <motion.div
@@ -752,7 +754,7 @@ export default function App() {
       </AnimatePresence>
 
       {/* Bottom Nav */}
-      <nav className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white border-t border-zinc-100 p-4 flex justify-around items-center z-10">
+      <nav className={`fixed left-0 right-0 max-w-md mx-auto bg-white border-t border-zinc-100 p-4 flex justify-around items-center z-10 ${hasNativeBottomAd ? 'bottom-[56px]' : 'bottom-0'}`}>
         <button 
           onClick={() => { setActiveView('scan'); reset(); }}
           className={`flex flex-col items-center gap-1 transition-colors ${activeView === 'scan' ? 'text-emerald-500' : 'text-zinc-300'}`}
