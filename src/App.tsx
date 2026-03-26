@@ -620,7 +620,7 @@ export default function App() {
         </div>
       </header>
 
-      <main className={`flex-1 p-6 ${hasNativeBottomAd ? 'pb-48' : 'pb-24'}`}>
+      <main className="flex-1 p-6">
         <AnimatePresence mode="wait">
           {activeView === 'scan' && (
             <motion.div
@@ -752,17 +752,17 @@ export default function App() {
       </AnimatePresence>
 
       {/* Bottom Nav */}
-      <nav className={`fixed left-0 right-0 max-w-md mx-auto px-4 pt-3 pb-4 flex justify-around items-center z-10 border border-zinc-200/70 bg-white/95 backdrop-blur-xl shadow-[0_-10px_30px_rgba(0,0,0,0.08)] ${hasNativeBottomAd ? 'bottom-[88px] rounded-2xl mx-3' : 'bottom-0 border-t border-x-0 rounded-none'}`}>
+      <nav className={`max-w-md mx-3 mt-2 px-4 py-3 flex justify-around items-center bg-white border-t border-zinc-100 ${hasNativeBottomAd ? 'mb-[72px]' : 'mb-0'}`}>
         <button 
           onClick={() => { setActiveView('scan'); reset(); }}
-          className={`min-w-[92px] py-1 flex flex-col items-center gap-1 transition-colors ${activeView === 'scan' ? 'text-emerald-500' : 'text-zinc-300'}`}
+          className={`flex flex-col items-center gap-1 transition-colors ${activeView === 'scan' ? 'text-emerald-500' : 'text-zinc-300'}`}
         >
           <Camera className="w-6 h-6" />
           <span className="text-[10px] font-bold uppercase tracking-widest">Scan</span>
         </button>
         <button 
           onClick={() => setActiveView('log')}
-          className={`min-w-[92px] py-1 flex flex-col items-center gap-1 transition-colors ${activeView === 'log' ? 'text-emerald-500' : 'text-zinc-300'}`}
+          className={`flex flex-col items-center gap-1 transition-colors ${activeView === 'log' ? 'text-emerald-500' : 'text-zinc-300'}`}
         >
           <History className="w-6 h-6" />
           <span className="text-[10px] font-bold uppercase tracking-widest">Logbook</span>
