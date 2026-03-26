@@ -116,6 +116,13 @@ No system is 100% secure, so please do not upload unnecessary sensitive informat
 
 NutriSnap is not intended for children under 16 without parent or guardian permission.
 
-## 11. Changes
+## 11. Account Deletion Request URL
+
+Web deletion request page:
+- https://rrhjager.github.io/nutrisnap/account-deletion.html
+
+Users can request account and associated data deletion using this page.
+
+## 12. Changes
 
 We may update this Privacy Policy. Material changes will be reflected in an updated version with a new date.
