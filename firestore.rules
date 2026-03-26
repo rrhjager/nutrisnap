@@ -1,0 +1,148 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: users
+    // Document ID: {uid}
+    // Fields:
+    //   - uid: string (required) - The unique user ID from Firebase Auth.
+    //   - displayName: string (optional) - The user's display name.
+    //   - email: string (optional) - The user's email address.
+    //   - photoURL: string (optional) - The user's profile photo URL.
+    //   - isGuest: bool (optional) - Whether the user is logged in as a guest.
+    //   - createdAt: timestamp (required) - When the profile was created.
+    //
+    // Collection: users/{uid}/meals
+    // Document ID: {mealId}
+    // Fields:
+    //   - userId: string (required) - The ID of the user who logged the meal.
+    //   - timestamp: number (required) - When the meal was logged (ms).
+    //   - foodName: string (required) - The name of the food.
+    //   - calories: number (required) - Calories.
+    //   - protein: number (required) - Protein.
+    //   - carbs: number (required) - Carbs.
+    //   - fat: number (required) - Fat.
+    //   - servingSize: string (optional)
+    //   - ingredients: list (optional)
+    //   - isSynced: bool (optional)
+    //
+    // Collection: users/{uid}/scans
+    // Document ID: {scanId}
+    // Fields:
+    //   - id: string (required)
+    //   - userId: string (required)
+    //   - timestamp: timestamp (required)
+    //   - foodName: string (required)
+    //   - calories: number (required)
+    //   - protein: number (required)
+    //   - carbs: number (required)
+    //   - fat: number (required)
+    //   - servingSize: string (optional)
+    //   - confidence: number (optional)
+    //
+    // ===============================================================
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() &&
+        (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+          (request.auth.token.email == "RRHJager@gmail.com" && request.auth.token.email_verified == true));
+    }
+
+    function isValidUser(data) {
+      return data.keys().hasAll(['uid']) &&
+             data.uid is string &&
+             data.uid == request.auth.uid &&
+             (!('createdAt' in data) || data.createdAt is timestamp || data.createdAt is number);
+    }
+
+    function isValidUserUpdate(requestData, resourceData) {
+      return isValidUser(requestData) &&
+             (!('createdAt' in resourceData) || requestData.createdAt == resourceData.createdAt) &&
+             (requestData.get('isPremium', false) == resourceData.get('isPremium', false)) &&
+             (requestData.get('stripeCustomerId', null) == resourceData.get('stripeCustomerId', null)) &&
+             (requestData.get('stripeSubscriptionId', null) == resourceData.get('stripeSubscriptionId', null));
+    }
+
+    function isValidMeal(data) {
+      return data.keys().hasAll(['userId', 'timestamp', 'foodName', 'calories']) &&
+             data.userId == request.auth.uid &&
+             (data.timestamp is timestamp || data.timestamp is number) &&
+             data.foodName is string &&
+             data.calories is number &&
+             data.calories >= 0;
+    }
+
+    function isValidScan(data) {
+      return data.keys().hasAll(['userId', 'timestamp', 'foodName', 'calories']) &&
+             data.userId == request.auth.uid &&
+             (data.timestamp is timestamp || data.timestamp is number) &&
+             data.foodName is string &&
+             data.foodName.size() <= 500 &&
+             data.calories is number &&
+             data.calories >= 0;
+    }
+
+    function isValidFavorite(data) {
+      return data.keys().hasAll(['userId', 'createdAt', 'foodName', 'calories', 'customName']) &&
+             data.userId == request.auth.uid &&
+             (data.createdAt is timestamp || data.createdAt is number) &&
+             data.foodName is string &&
+             data.customName is string &&
+             data.customName.size() <= 100 &&
+             data.foodName.size() <= 500 &&
+             data.calories is number &&
+             data.calories >= 0;
+    }
+
+    // ===============================================================
+    // Rules
+    // ===============================================================
+
+    match /users/{uid} {
+      allow read: if isOwner(uid) || isAdmin();
+      allow create: if isOwner(uid) && isValidUser(request.resource.data);
+      allow update: if isOwner(uid) && isValidUserUpdate(request.resource.data, resource.data);
+      
+      match /meals/{mealId} {
+        allow read: if isOwner(uid) || isAdmin();
+        allow create: if isOwner(uid) && isValidMeal(request.resource.data);
+        allow update: if isOwner(uid) && isValidMeal(request.resource.data) &&
+                        request.resource.data.userId == resource.data.userId;
+        allow delete: if isOwner(uid) || isAdmin();
+      }
+
+      match /scans/{scanId} {
+        allow read: if isOwner(uid) || isAdmin();
+        allow create: if isOwner(uid) && isValidScan(request.resource.data);
+        allow delete: if isOwner(uid) || isAdmin();
+      }
+
+      match /favorites/{favoriteId} {
+        allow read: if isOwner(uid) || isAdmin();
+        allow create: if isOwner(uid) && isValidFavorite(request.resource.data);
+        allow update: if isOwner(uid) && isValidFavorite(request.resource.data) &&
+                        request.resource.data.userId == resource.data.userId;
+        allow delete: if isOwner(uid) || isAdmin();
+      }
+    }
+
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

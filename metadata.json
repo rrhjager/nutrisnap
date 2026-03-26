@@ -1,0 +1,5 @@
+{
+  "name": "NutriSnap",
+  "description": "Snap a photo of your meal to instantly get estimated calories and nutritional facts using AI.",
+  "requestFramePermissions": ["camera", "microphone"]
+}

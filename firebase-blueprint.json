@@ -1,0 +1,71 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile information and preferences.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "The unique user ID from Firebase Auth." },
+        "displayName": { "type": "string", "description": "The user's display name." },
+        "email": { "type": "string", "description": "The user's email address." },
+        "photoURL": { "type": "string", "description": "The user's profile photo URL." },
+        "isGuest": { "type": "boolean", "description": "Whether the user is logged in as a guest." },
+        "isPremium": { "type": "boolean", "description": "Whether the user has a premium subscription." },
+        "scansToday": { "type": "integer", "description": "Number of scans performed today." },
+        "lastScanDate": { "type": "string", "description": "The date of the last scan (YYYY-MM-DD)." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the profile was created." }
+      },
+      "required": ["uid", "createdAt"]
+    },
+    "MealLog": {
+      "title": "MealLog",
+      "description": "A log entry for a meal.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "The ID of the user who logged the meal." },
+        "timestamp": { "type": "integer", "description": "When the meal was logged (ms since epoch)." },
+        "foodName": { "type": "string" },
+        "calories": { "type": "number" },
+        "protein": { "type": "number" },
+        "carbs": { "type": "number" },
+        "fat": { "type": "number" },
+        "servingSize": { "type": "string" },
+        "ingredients": { "type": "array", "items": { "type": "string" } },
+        "isSynced": { "type": "boolean" }
+      },
+      "required": ["userId", "timestamp", "calories", "foodName"]
+    },
+    "ScanHistory": {
+      "title": "ScanHistory",
+      "description": "A record of a food scan.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "foodName": { "type": "string" },
+        "calories": { "type": "number" },
+        "protein": { "type": "number" },
+        "carbs": { "type": "number" },
+        "fat": { "type": "number" },
+        "servingSize": { "type": "string" },
+        "confidence": { "type": "number" }
+      },
+      "required": ["id", "userId", "timestamp", "foodName"]
+    }
+  },
+  "firestore": {
+    "/users/{uid}": {
+      "schema": "UserProfile",
+      "description": "User profile documents."
+    },
+    "/users/{uid}/meals/{mealId}": {
+      "schema": "MealLog",
+      "description": "Meal logs for a specific user."
+    },
+    "/users/{uid}/scans/{scanId}": {
+      "schema": "ScanHistory",
+      "description": "History of all scans performed by the user."
+    }
+  }
+}
