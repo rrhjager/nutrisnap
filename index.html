@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="nl">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NutriSnap Privacyverklaring</title>
+    <title>NutriSnap Privacy Policy</title>
     <style>
       :root {
         --bg: #f5f7fb;
@@ -62,84 +62,84 @@
   <body>
     <div class="wrap">
       <div class="card">
-        <h1>Privacyverklaring NutriSnap</h1>
-        <div class="meta">Laatst bijgewerkt: 26 maart 2026</div>
+        <h1>NutriSnap Privacy Policy</h1>
+        <div class="meta">Last updated: March 26, 2026</div>
         <p>
-          Deze privacyverklaring beschrijft welke persoonsgegevens NutriSnap verwerkt,
-          waarom dat gebeurt en welke rechten je hebt onder de AVG.
+          This Privacy Policy explains what personal data NutriSnap processes,
+          why it is processed, and your rights under the GDPR.
         </p>
 
-        <h2>1. Verantwoordelijke</h2>
-        <p>NutriSnap<br />Contact: <a href="mailto:rrhjager@gmail.com">rrhjager@gmail.com</a></p>
+        <h2>1. Data Controller</h2>
+        <p>NutriSnap<br />Contact: <a href="mailto:kaartenautomaat@gmail.com">kaartenautomaat@gmail.com</a></p>
 
-        <h2>2. Welke gegevens we verwerken</h2>
-        <p><span class="tag">Guest</span><span class="tag">Google-login</span><span class="tag">Premium</span></p>
+        <h2>2. Data We Process</h2>
+        <p><span class="tag">Guest</span><span class="tag">Google Sign-In</span><span class="tag">Premium</span></p>
         <ul>
-          <li>Profielgegevens: uid, displayName, email (bij Google-login), photoURL, isGuest, isPremium.</li>
-          <li>Voortgang: scansToday, lastScanDate, totalScans, currentStreak, longestStreak, unlockedBadges.</li>
-          <li>Instellingen/doelen: dailyCalorieGoal, dailyProteinGoal, dailyCarbsGoal, dailyFatGoal, waterAmount, hasCompletedOnboarding.</li>
-          <li>Loggegevens: maaltijden, scans en favorieten in Firestore (`users/{uid}/meals`, `users/{uid}/scans`, `users/{uid}/favorites`).</li>
+          <li>Profile data: uid, displayName, email (for Google sign-in), photoURL, isGuest, isPremium.</li>
+          <li>Tracking/progress: scansToday, lastScanDate, totalScans, currentStreak, longestStreak, unlockedBadges.</li>
+          <li>Settings/goals: dailyCalorieGoal, dailyProteinGoal, dailyCarbsGoal, dailyFatGoal, waterAmount, hasCompletedOnboarding.</li>
+          <li>Log data in Firestore (`users/{uid}/meals`, `users/{uid}/scans`, `users/{uid}/favorites`).</li>
           <li>Premium-only: stripeCustomerId, stripeSubscriptionId, updatedAt.</li>
         </ul>
 
-        <h2>3. Lokale opslag op je apparaat</h2>
+        <h2>3. Local Device Storage</h2>
         <ul>
           <li>`darkMode`</li>
-          <li>`guest_scan_count` en `guest_scan_date` (guest flow)</li>
-          <li>`googleFitToken` in sessionStorage (alleen tijdens sessie)</li>
+          <li>`guest_scan_count` and `guest_scan_date` (guest flow)</li>
+          <li>`googleFitToken` in sessionStorage (active session only)</li>
         </ul>
 
-        <h2>4. Camera, barcode en spraak</h2>
+        <h2>4. Camera, Barcode, and Voice</h2>
         <p>
-          Voor voedselanalyse verwerken we camerabeelden, barcode-invoer en (optioneel)
-          spraak/tekstbeschrijving. De app gebruikt deze input om voedingswaarden te berekenen.
+          For food analysis, we process camera images, barcode input, and optional voice/text meal descriptions.
+          This data is used to calculate nutritional values.
         </p>
 
-        <h2>5. Waarom we deze gegevens gebruiken</h2>
+        <h2>5. Why We Use Data</h2>
         <ul>
-          <li>Accountbeheer en authenticatie</li>
-          <li>Maaltijdanalyse en logboek</li>
-          <li>Doelen, voortgang, badges en scanlimieten</li>
-          <li>Premium-abonnementen en facturatieflow</li>
-          <li>Optionele Google Fit synchronisatie</li>
-          <li>Lokale reminder-notificaties op Android</li>
+          <li>Authentication and account management</li>
+          <li>Food analysis and meal logging features</li>
+          <li>Scan limits, goals, progress, and badges</li>
+          <li>Premium subscription management</li>
+          <li>Optional Google Fit synchronization</li>
+          <li>Android local reminder notifications</li>
         </ul>
 
-        <h2>6. Externe partijen</h2>
+        <h2>6. Third-Party Services</h2>
         <ul>
           <li>Firebase (Auth + Firestore)</li>
-          <li>Google Gemini API (AI-analyse)</li>
-          <li>Open Food Facts (barcode productdata)</li>
-          <li>Stripe (betalingen en abonnementen)</li>
-          <li>Google Fit API (alleen bij gekoppelde Google-login)</li>
-          <li>Hostingplatform (server/API-verwerking)</li>
+          <li>Google Gemini API (AI analysis)</li>
+          <li>Open Food Facts (barcode product lookup)</li>
+          <li>Stripe (payments and subscriptions)</li>
+          <li>Google Fit API (optional for connected Google accounts)</li>
+          <li>Hosting platform (server/API processing)</li>
         </ul>
 
-        <h2>7. Betalingen</h2>
+        <h2>7. Payments</h2>
         <p>
-          Kaartgegevens worden niet door NutriSnap opgeslagen. Betalingen lopen via Stripe Checkout.
-          NutriSnap slaat alleen abonnementreferenties op (zoals customer/subscription id).
+          NutriSnap does not store full card numbers. Payments are handled through Stripe Checkout.
+          NutriSnap stores only subscription reference data (for example customer/subscription IDs).
         </p>
 
-        <h2>8. Bewaartermijn</h2>
+        <h2>8. Data Retention</h2>
         <p>
-          Gegevens blijven bewaard zolang het account actief is of totdat verwijdering wordt aangevraagd.
-          Guest-data is bedoeld als tijdelijk gebruik, maar kan technisch blijven bestaan tot verwijdering.
+          Data is retained while your account is active or until deletion is requested.
+          Guest data is intended for temporary use but may remain until removed.
         </p>
 
-        <h2>9. Jouw rechten (AVG)</h2>
+        <h2>9. Your Rights (GDPR)</h2>
         <ul>
-          <li>Recht op inzage</li>
-          <li>Recht op correctie</li>
-          <li>Recht op verwijdering</li>
-          <li>Recht op beperking/bezwaar</li>
-          <li>Recht op dataportabiliteit (waar technisch mogelijk)</li>
+          <li>Right of access</li>
+          <li>Right to rectification</li>
+          <li>Right to erasure</li>
+          <li>Right to restriction/objection</li>
+          <li>Right to data portability (where feasible)</li>
         </ul>
-        <p>Voor verzoeken: <a href="mailto:rrhjager@gmail.com">rrhjager@gmail.com</a></p>
+        <p>Privacy requests: <a href="mailto:kaartenautomaat@gmail.com">kaartenautomaat@gmail.com</a></p>
 
-        <h2>10. Wijzigingen</h2>
+        <h2>10. Changes</h2>
         <p>
-          Deze verklaring kan worden aangepast. Op deze pagina staat altijd de meest recente versie.
+          This policy may be updated. The latest version is always published on this page.
         </p>
       </div>
     </div>
