@@ -15,8 +15,8 @@
     "android:sync": "npm run build && npx cap sync android",
     "android:open": "npx cap open android",
     "android:run": "npm run build && npx cap run android",
-    "android:build:debug": "cd android && ./gradlew assembleDebug",
-    "android:build:release": "cd android && ./gradlew assembleRelease"
+    "android:build:debug": "bash scripts/android-gradle.sh assembleDebug",
+    "android:build:release": "bash scripts/android-gradle.sh assembleRelease"
   },
   "dependencies": {
     "@capacitor-community/admob": "^8.0.0",

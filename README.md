@@ -38,5 +38,8 @@ Build APK from CLI:
 - Release APK:
   `npm run android:build:release`
 
+Note:
+- The build scripts auto-detect Android Studio's bundled JDK on macOS when `JAVA_HOME` is not set.
+
 Output location after debug build:
 - `android/app/build/outputs/apk/debug/app-debug.apk`
