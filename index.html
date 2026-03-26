@@ -1,18 +1,147 @@
 <!doctype html>
-<html lang="en">
+<html lang="nl">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>NutriSnap - AI Nutrition Tracker</title>
-    <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#10b981" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <link rel="apple-touch-icon" href="https://picsum.photos/seed/nutrisnap-icon/192/192" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NutriSnap Privacyverklaring</title>
+    <style>
+      :root {
+        --bg: #f5f7fb;
+        --card: #ffffff;
+        --text: #0f172a;
+        --muted: #475569;
+        --accent: #059669;
+        --border: #e2e8f0;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background: radial-gradient(circle at top right, #d1fae5, #f5f7fb 45%);
+        color: var(--text);
+        line-height: 1.6;
+      }
+      .wrap {
+        max-width: 920px;
+        margin: 0 auto;
+        padding: 40px 16px 64px;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(2, 6, 23, 0.06);
+        padding: 28px;
+      }
+      h1, h2 { line-height: 1.25; }
+      h1 { margin: 0 0 8px; font-size: 30px; }
+      h2 { margin-top: 28px; font-size: 21px; }
+      p, li { color: var(--muted); }
+      ul { padding-left: 20px; }
+      .meta {
+        color: #334155;
+        background: #ecfdf5;
+        border: 1px solid #a7f3d0;
+        border-radius: 10px;
+        padding: 10px 12px;
+        margin-bottom: 18px;
+      }
+      .tag {
+        display: inline-block;
+        padding: 3px 8px;
+        font-size: 12px;
+        border-radius: 999px;
+        background: #ecfdf5;
+        color: var(--accent);
+        border: 1px solid #a7f3d0;
+        margin-right: 6px;
+      }
+      a { color: var(--accent); }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <div class="wrap">
+      <div class="card">
+        <h1>Privacyverklaring NutriSnap</h1>
+        <div class="meta">Laatst bijgewerkt: 26 maart 2026</div>
+        <p>
+          Deze privacyverklaring beschrijft welke persoonsgegevens NutriSnap verwerkt,
+          waarom dat gebeurt en welke rechten je hebt onder de AVG.
+        </p>
+
+        <h2>1. Verantwoordelijke</h2>
+        <p>NutriSnap<br />Contact: <a href="mailto:rrhjager@gmail.com">rrhjager@gmail.com</a></p>
+
+        <h2>2. Welke gegevens we verwerken</h2>
+        <p><span class="tag">Guest</span><span class="tag">Google-login</span><span class="tag">Premium</span></p>
+        <ul>
+          <li>Profielgegevens: uid, displayName, email (bij Google-login), photoURL, isGuest, isPremium.</li>
+          <li>Voortgang: scansToday, lastScanDate, totalScans, currentStreak, longestStreak, unlockedBadges.</li>
+          <li>Instellingen/doelen: dailyCalorieGoal, dailyProteinGoal, dailyCarbsGoal, dailyFatGoal, waterAmount, hasCompletedOnboarding.</li>
+          <li>Loggegevens: maaltijden, scans en favorieten in Firestore (`users/{uid}/meals`, `users/{uid}/scans`, `users/{uid}/favorites`).</li>
+          <li>Premium-only: stripeCustomerId, stripeSubscriptionId, updatedAt.</li>
+        </ul>
+
+        <h2>3. Lokale opslag op je apparaat</h2>
+        <ul>
+          <li>`darkMode`</li>
+          <li>`guest_scan_count` en `guest_scan_date` (guest flow)</li>
+          <li>`googleFitToken` in sessionStorage (alleen tijdens sessie)</li>
+        </ul>
+
+        <h2>4. Camera, barcode en spraak</h2>
+        <p>
+          Voor voedselanalyse verwerken we camerabeelden, barcode-invoer en (optioneel)
+          spraak/tekstbeschrijving. De app gebruikt deze input om voedingswaarden te berekenen.
+        </p>
+
+        <h2>5. Waarom we deze gegevens gebruiken</h2>
+        <ul>
+          <li>Accountbeheer en authenticatie</li>
+          <li>Maaltijdanalyse en logboek</li>
+          <li>Doelen, voortgang, badges en scanlimieten</li>
+          <li>Premium-abonnementen en facturatieflow</li>
+          <li>Optionele Google Fit synchronisatie</li>
+          <li>Lokale reminder-notificaties op Android</li>
+        </ul>
+
+        <h2>6. Externe partijen</h2>
+        <ul>
+          <li>Firebase (Auth + Firestore)</li>
+          <li>Google Gemini API (AI-analyse)</li>
+          <li>Open Food Facts (barcode productdata)</li>
+          <li>Stripe (betalingen en abonnementen)</li>
+          <li>Google Fit API (alleen bij gekoppelde Google-login)</li>
+          <li>Hostingplatform (server/API-verwerking)</li>
+        </ul>
+
+        <h2>7. Betalingen</h2>
+        <p>
+          Kaartgegevens worden niet door NutriSnap opgeslagen. Betalingen lopen via Stripe Checkout.
+          NutriSnap slaat alleen abonnementreferenties op (zoals customer/subscription id).
+        </p>
+
+        <h2>8. Bewaartermijn</h2>
+        <p>
+          Gegevens blijven bewaard zolang het account actief is of totdat verwijdering wordt aangevraagd.
+          Guest-data is bedoeld als tijdelijk gebruik, maar kan technisch blijven bestaan tot verwijdering.
+        </p>
+
+        <h2>9. Jouw rechten (AVG)</h2>
+        <ul>
+          <li>Recht op inzage</li>
+          <li>Recht op correctie</li>
+          <li>Recht op verwijdering</li>
+          <li>Recht op beperking/bezwaar</li>
+          <li>Recht op dataportabiliteit (waar technisch mogelijk)</li>
+        </ul>
+        <p>Voor verzoeken: <a href="mailto:rrhjager@gmail.com">rrhjager@gmail.com</a></p>
+
+        <h2>10. Wijzigingen</h2>
+        <p>
+          Deze verklaring kan worden aangepast. Op deze pagina staat altijd de meest recente versie.
+        </p>
+      </div>
+    </div>
   </body>
 </html>
-
