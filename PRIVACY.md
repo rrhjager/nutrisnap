@@ -1,121 +1,121 @@
-# Privacyverklaring NutriSnap
+# NutriSnap Privacy Policy
 
-Laatst bijgewerkt: 26 maart 2026
+Last updated: March 26, 2026
 
-Deze privacyverklaring legt uit welke persoonsgegevens NutriSnap verwerkt, waarom we dat doen, waar deze gegevens worden opgeslagen en welke rechten je hebt onder de AVG (GDPR).
+This Privacy Policy explains what personal data NutriSnap processes, why we process it, where it is stored, and your rights under the GDPR.
 
-## 1. Verantwoordelijke
+## 1. Data Controller
 
 NutriSnap (app)  
-Contact: rrhjager@gmail.com
+Contact: kaartenautomaat@gmail.com
 
-## 2. Welke gegevens we verwerken
+## 2. Data We Process
 
-### 2.1 Gegevens bij **guest-account** (anoniem via Firebase Auth)
+### 2.1 Data for **guest accounts** (anonymous Firebase Auth)
 
-Wij verwerken en bewaren:
-- `uid` (anonieme gebruikers-id)
+We process and store:
+- `uid` (anonymous user ID)
 - `displayName` (`Guest`)
 - `isGuest`
-- doelen en voortgang: `dailyCalorieGoal`, `dailyProteinGoal`, `dailyCarbsGoal`, `dailyFatGoal`, `waterAmount`
-- gebruiksdata: `scansToday`, `lastScanDate`, `createdAt`
-- logdata in Firestore:
+- goals and tracking fields: `dailyCalorieGoal`, `dailyProteinGoal`, `dailyCarbsGoal`, `dailyFatGoal`, `waterAmount`
+- usage fields: `scansToday`, `lastScanDate`, `createdAt`
+- Firestore logs:
   - `users/{uid}/meals`
   - `users/{uid}/scans`
   - `users/{uid}/favorites`
-- voortgangsvelden: `totalScans`, `currentStreak`, `longestStreak`, `unlockedBadges`, `hasCompletedOnboarding`
+- progress fields: `totalScans`, `currentStreak`, `longestStreak`, `unlockedBadges`, `hasCompletedOnboarding`
 
-Lokaal op je apparaat slaan we op:
+Locally on your device, we store:
 - `guest_scan_count`
 - `guest_scan_date`
 - `darkMode`
 
-### 2.2 Gegevens bij **Google-login**
+### 2.2 Data for **Google sign-in accounts**
 
-Bovenstaande gegevens, plus:
+All data above, plus:
 - `email`
 - `displayName`
 - `photoURL`
-- authenticatiegegevens via Firebase Auth (provider: Google)
+- authentication data via Firebase Auth (provider: Google)
 
-Extra lokaal (session storage):
-- `googleFitToken` (alleen tijdens de browser/app-sessie)
+Additional local session storage:
+- `googleFitToken` (during active browser/app session)
 
-### 2.3 Gegevens bij **Premium-account**
+### 2.3 Data for **Premium accounts**
 
-Bovenstaande gegevens, plus:
+All data above, plus:
 - `isPremium`
 - `stripeCustomerId`
 - `stripeSubscriptionId`
 - `updatedAt` (server timestamp)
 
-Let op:
-- NutriSnap verwerkt zelf **geen volledige kaartgegevens**.
-- Betalingen lopen via Stripe Checkout.
+Important:
+- NutriSnap does **not** store full payment card numbers.
+- Payments are handled through Stripe Checkout.
 
-## 3. Gegevens uit camera, barcode en spraak
+## 3. Camera, Barcode, and Voice Data
 
-Voor voedingsanalyse verwerken wij:
-- camerabeelden (als base64) voor AI-analyse
-- barcode-gegevens
-- spraak/tekstbeschrijving van maaltijden
+For nutrition analysis, we process:
+- camera images (base64 format)
+- barcode input
+- voice/text food descriptions
 
-Deze input wordt gebruikt om voedingswaarden te berekenen (`foodName`, `calories`, `protein`, `carbs`, `fat`, `servingSize`, `ingredients`, `confidence`).
+This input is used to generate nutrition outputs (`foodName`, `calories`, `protein`, `carbs`, `fat`, `servingSize`, `ingredients`, `confidence`).
 
-## 4. Waarom we deze gegevens verwerken
+## 4. Why We Process Data
 
-Doeleinden:
-- account en login mogelijk maken
-- maaltijdanalyse en logboekfunctionaliteit
-- scanlimieten, voortgang en badges beheren
-- doelen en waterinname opslaan
-- premium-abonnementen beheren
-- optioneel synchroniseren met Google Fit
-- dagelijks herinneringsbericht op Android (lokale notificatie)
+Purposes:
+- account and authentication management
+- food analysis and meal logging features
+- scan limits, streaks, badges, and progress
+- storing goals and water intake
+- premium subscription management
+- optional Google Fit synchronization
+- Android local reminder notifications
 
-## 5. Met wie we gegevens delen (verwerkers/diensten)
+## 5. Services and Processors We Use
 
-Wij gebruiken:
-- **Firebase (Google)**: authenticatie en Firestore-opslag
-- **Google Gemini API**: analyse van foto/tekst voor voedingsschatting
-- **Open Food Facts**: productinformatie op basis van barcode
-- **Stripe**: abonnementen en betalingen
-- **Google Fit API** (optioneel, na Google-login): sync van maaltijdwaarden
-- **Hostingplatform** (Vercel/Cloud run-time): serververwerking en API-routes
+We use:
+- **Firebase (Google)**: authentication and Firestore storage
+- **Google Gemini API**: image/text nutrition estimation
+- **Open Food Facts**: barcode product lookup
+- **Stripe**: subscriptions and payments
+- **Google Fit API** (optional): nutrition sync after Google sign-in
+- **Hosting platform** (Vercel/Cloud runtime): API and backend processing
 
-## 6. Rechtsgrond (AVG)
+## 6. Legal Bases (GDPR)
 
-Wij verwerken gegevens op basis van:
-- uitvoering van de dienst (account, logboek, premiumfunctionaliteit)
-- toestemming (bijv. camera, notificaties, Google Fit-koppeling)
-- gerechtvaardigd belang (beveiliging, foutanalyse, misbruikpreventie)
+We process personal data based on:
+- performance of our service (account, app features, subscription functionality)
+- consent (for example camera access, notifications, Google Fit connection)
+- legitimate interests (security, debugging, abuse prevention)
 
-## 7. Bewaartermijnen
+## 7. Data Retention
 
-- Account- en loggegevens worden bewaard zolang je account actief is, of tot verwijdering op verzoek.
-- Guest-data is bedoeld als tijdelijk gebruik, maar kan technisch blijven bestaan totdat deze wordt verwijderd.
-- Stripe-gerelateerde abonnementreferenties worden bewaard zolang nodig voor abonnementbeheer en administratie.
+- Account and log data is retained while your account is active, or until deletion is requested.
+- Guest data is intended for temporary use, but may technically remain until removed.
+- Stripe subscription reference data is retained as needed for subscription handling and administration.
 
-## 8. Jouw rechten
+## 8. Your Rights
 
-Je kunt verzoeken om:
-- inzage in je persoonsgegevens
-- correctie van onjuiste gegevens
-- verwijdering van je gegevens
-- beperking of bezwaar tegen bepaalde verwerking
-- dataportabiliteit (waar technisch mogelijk)
+You can request:
+- access to your personal data
+- correction of inaccurate data
+- deletion of your data
+- restriction of processing or objection
+- data portability (where technically feasible)
 
-Stuur hiervoor een verzoek naar: rrhjager@gmail.com
+For privacy requests, contact: kaartenautomaat@gmail.com
 
-## 9. Beveiliging
+## 9. Security
 
-Wij nemen redelijke technische en organisatorische maatregelen om persoonsgegevens te beveiligen.  
-Geen enkel systeem is 100% veilig; deel daarom nooit onnodig gevoelige informatie via vrije tekstvelden of afbeeldingen.
+We apply reasonable technical and organizational measures to protect personal data.  
+No system is 100% secure, so please do not upload unnecessary sensitive information in free-text fields or images.
 
-## 10. Minderjarigen
+## 10. Children
 
-NutriSnap is niet gericht op kinderen onder 16 jaar zonder toestemming van ouder/voogd.
+NutriSnap is not intended for children under 16 without parent or guardian permission.
 
-## 11. Wijzigingen
+## 11. Changes
 
-Wij kunnen deze privacyverklaring aanpassen. Bij belangrijke wijzigingen publiceren we een bijgewerkte versie met nieuwe datum.
+We may update this Privacy Policy. Material changes will be reflected in an updated version with a new date.
