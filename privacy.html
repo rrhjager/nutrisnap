@@ -3,14 +3,166 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="refresh" content="0; url=./" />
-    <link rel="canonical" href="https://rrhjager.github.io/nutrisnap/" />
     <title>NutriSnap Privacy Policy</title>
+    <style>
+      :root {
+        color: #18231f;
+        background: #f7faf8;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.55;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      main {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 48px 20px 72px;
+      }
+
+      h1,
+      h2,
+      h3 {
+        line-height: 1.2;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: 2.25rem;
+      }
+
+      h2 {
+        margin-top: 36px;
+        font-size: 1.35rem;
+      }
+
+      h3 {
+        margin-top: 24px;
+        font-size: 1.05rem;
+      }
+
+      p,
+      li {
+        color: #3d4b46;
+      }
+
+      code {
+        padding: 2px 5px;
+        border-radius: 5px;
+        background: #e8eee9;
+      }
+
+      a {
+        color: #176b4d;
+      }
+    </style>
   </head>
   <body>
-    <p>
-      NutriSnap Privacy Policy:
-      <a href="./">https://rrhjager.github.io/nutrisnap/</a>
-    </p>
+    <main>
+      <h1>NutriSnap Privacy Policy</h1>
+      <p><strong>Last updated:</strong> June 1, 2026</p>
+      <p>
+        This Privacy Policy explains what personal data NutriSnap processes, why we process it, where it is stored, and your rights under the GDPR.
+      </p>
+
+      <h2>1. Data Controller</h2>
+      <p>NutriSnap (app)<br />Contact: <a href="mailto:kaartenautomaat@gmail.com">kaartenautomaat@gmail.com</a></p>
+
+      <h2>2. Data We Process</h2>
+      <h3>2.1 Data for guest accounts</h3>
+      <p>For anonymous Firebase Auth guest accounts, we process and store:</p>
+      <ul>
+        <li><code>uid</code> (anonymous user ID), <code>displayName</code> (<code>Guest</code>), and <code>isGuest</code></li>
+        <li>goals and tracking fields such as daily calorie, protein, carbs, fat, and water goals</li>
+        <li>usage fields such as scans today, last scan date, and created date</li>
+        <li>Firestore logs for meals, scans, favorites, progress, streaks, and badges</li>
+      </ul>
+      <p>Locally on your device, we may store scan counters, scan dates, and dark mode preferences.</p>
+
+      <h3>2.2 Data for Google sign-in accounts</h3>
+      <p>Google sign-in accounts include the guest account data above, plus email, display name, photo URL, and Firebase Auth provider data.</p>
+
+      <h3>2.3 Data for Premium accounts</h3>
+      <p>Premium accounts include subscription reference fields such as product ID, purchase token, order ID, purchase time, acknowledgement status, subscription state, and expiry time.</p>
+      <p>NutriSnap does not store full payment card numbers. Android app payments are handled through Google Play Billing. Stripe may still be used for legacy web checkout flows.</p>
+
+      <h3>2.4 Advertising and consent data</h3>
+      <p>
+        For free users, NutriSnap may show ads through Google AdMob. Depending on your consent choices and device settings, Google AdMob may process:
+      </p>
+      <ul>
+        <li>device and app information</li>
+        <li>advertising identifiers or similar identifiers</li>
+        <li>approximate location derived from your device or network</li>
+        <li>ad interaction data</li>
+        <li>consent choices shown through Google's User Messaging Platform (UMP)</li>
+      </ul>
+      <p>You can manage ad privacy choices when Google requires this option in the app. Premium users do not see ads in NutriSnap.</p>
+
+      <h2>3. Camera, Barcode, and Voice Data</h2>
+      <p>For nutrition analysis, we process camera images, barcode input, and voice or text food descriptions. This input is used to generate nutrition outputs such as food name, calories, macros, serving size, ingredients, and confidence.</p>
+
+      <h2>4. Health Connect Data</h2>
+      <p>Premium users can optionally connect Android Health Connect. If enabled, NutriSnap requests read access only for active calories burned so the Logbook can show burned kcal and net kcal for the day.</p>
+      <p>NutriSnap does not write data to Health Connect. Health Connect data is not used for advertising and can be revoked in Android Health Connect settings at any time.</p>
+
+      <h2>5. Why We Process Data</h2>
+      <ul>
+        <li>account and authentication management</li>
+        <li>food analysis and meal logging features</li>
+        <li>scan limits, streaks, badges, and progress</li>
+        <li>storing goals and water intake</li>
+        <li>showing ads to free users and managing consent choices</li>
+        <li>premium subscription management</li>
+        <li>optional Google Fit synchronization</li>
+        <li>optional Health Connect burned-calorie display for Premium users</li>
+        <li>Android local reminder notifications</li>
+      </ul>
+
+      <h2>6. Services and Processors We Use</h2>
+      <ul>
+        <li>Firebase (Google): authentication and Firestore storage</li>
+        <li>Google Gemini API: image/text nutrition estimation</li>
+        <li>Google AdMob and Google User Messaging Platform: advertising for free users and consent management</li>
+        <li>Open Food Facts: barcode product lookup</li>
+        <li>Stripe: subscriptions and payments for legacy web checkout flows</li>
+        <li>Google Fit API (optional): nutrition sync after Google sign-in</li>
+        <li>Android Health Connect (optional): active calories burned display for Premium users</li>
+        <li>Hosting platform (Vercel/Cloud runtime): API and backend processing</li>
+      </ul>
+
+      <h2>7. Legal Bases (GDPR)</h2>
+      <ul>
+        <li>performance of our service, including account, app features, and subscription functionality</li>
+        <li>consent, for example camera access, notifications, Google Fit, Health Connect, or ad consent choices</li>
+        <li>legitimate interests, including security, debugging, and abuse prevention</li>
+      </ul>
+
+      <h2>8. Data Retention</h2>
+      <ul>
+        <li>Account and log data is retained while your account is active, or until deletion is requested.</li>
+        <li>Guest data is intended for temporary use, but may technically remain until removed.</li>
+        <li>Subscription reference data is retained as needed for subscription handling and administration.</li>
+        <li>Health Connect access can be revoked in Android settings. NutriSnap reads Health Connect data on demand for the daily overview.</li>
+      </ul>
+
+      <h2>9. Your Rights</h2>
+      <p>You can request access, correction, deletion, restriction of processing or objection, and data portability where technically feasible.</p>
+      <p>For privacy requests, contact: <a href="mailto:kaartenautomaat@gmail.com">kaartenautomaat@gmail.com</a>.</p>
+
+      <h2>10. Security</h2>
+      <p>We apply reasonable technical and organizational measures to protect personal data. No system is 100% secure, so please do not upload unnecessary sensitive information in free-text fields or images.</p>
+
+      <h2>11. Children</h2>
+      <p>NutriSnap is not intended for children under 16 without parent or guardian permission.</p>
+
+      <h2>12. Account Deletion Request URL</h2>
+      <p>Users can request account and associated data deletion at <a href="https://rrhjager.github.io/nutrisnap/account-deletion.html">https://rrhjager.github.io/nutrisnap/account-deletion.html</a>.</p>
+
+      <h2>13. Changes</h2>
+      <p>We may update this Privacy Policy. Material changes will be reflected in an updated version with a new date.</p>
+    </main>
   </body>
 </html>
